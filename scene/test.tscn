@@ -1,14 +1,11 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://d0rvfbkh2smr6"]
 
-[ext_resource type="PackedScene" uid="uid://hxkvg7b5wacm" path="res://scene/Player/Player.tscn" id="1_lsgo2"]
+[ext_resource type="PackedScene" uid="uid://d0fdb7258a0q" path="res://scene/Player/Player.tscn" id="1_lsgo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mk8fo"]
 size = Vector2(20, 1344.5)
 
 [node name="test" type="Node2D"]
-
-[node name="RigidBody2D" parent="." instance=ExtResource("1_lsgo2")]
-position = Vector2(586, 167)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -17,3 +14,6 @@ position = Vector2(616.75, 628)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_mk8fo")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("1_lsgo2")]
+position = Vector2(274, 154)
