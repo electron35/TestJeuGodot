@@ -16,13 +16,15 @@ func _process(delta):
 	if (direction == 0): direction -=1
 	if player_ref != null:
 		if player_ref.position.x > position.x:
-			direction = 1
-		else:
 			direction = -1
+		else:
+			direction = 1
 	var velocity = Vector2.ZERO
 	velocity.x = (direction * speed)
 	
 	position += velocity * delta
+	
+	$sight.position = $JekkylRigid.position
 
 
 func _on_timer_timeout():
@@ -31,10 +33,12 @@ func _on_timer_timeout():
 
 
 func _on_sight_body_entered(body):
+		print("noticed")
 		player_notice = true
 		player_ref = body
 
 func _on_sight_body_exited(body):
+	print("unnoticed")
 	player_ref = null
 	player_notice = false
 	pass # Replace with function body.

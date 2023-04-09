@@ -19,33 +19,35 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oukew"]
-size = Vector2(640, 144)
+size = Vector2(640, 104)
 
 [node name="Jekkyl" instance=ExtResource("1_ybsu1")]
 script = ExtResource("2_24oou")
 speed = 200
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." index="0"]
+[node name="JekkylRigid" type="RigidBody2D" parent="." index="0"]
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JekkylRigid" index="0"]
 shape = SubResource("RectangleShape2D_c0ogn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="JekkylRigid" index="1"]
 sprite_frames = SubResource("SpriteFrames_fd3oi")
 
-[node name="Timer" type="Timer" parent="RigidBody2D" index="2"]
+[node name="Timer" type="Timer" parent="." index="1"]
 autostart = true
 
-[node name="sight" type="Area2D" parent="." index="1"]
-collision_layer = 8
-collision_mask = 0
+[node name="sight" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 8
+gravity_space_override = 1
+gravity = 2674.9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="sight" index="0"]
-position = Vector2(0, -41)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sight" index="0"]
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_oukew")
 
-[connection signal="timeout" from="RigidBody2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
 [connection signal="body_exited" from="sight" to="." method="_on_sight_body_exited"]
