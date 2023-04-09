@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6kplhoq04kd8"]
+
+[ext_resource type="Script" path="res://Task.gd" id="1_prg2j"]
+[ext_resource type="PackedScene" uid="uid://cqtcyabtipdma" path="res://scene/Interactibles/interactible.tscn" id="2_4ysww"]
+
+[node name="Task" type="AnimatedSprite2D"]
+script = ExtResource("1_prg2j")
+
+[node name="Interactible" parent="." instance=ExtResource("2_4ysww")]
+
+[connection signal="is_interacted_with" from="Interactible" to="." method="_on_interactible_is_interacted_with"]

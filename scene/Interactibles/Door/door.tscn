@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceucoo481da7b"]
+
+[ext_resource type="Script" path="res://scene/Interactibles/Door/door.gd" id="1_7rmha"]
+[ext_resource type="PackedScene" uid="uid://cqtcyabtipdma" path="res://scene/Interactibles/interactible.tscn" id="1_ix7ih"]
+
+[node name="Door" type="AnimatedSprite2D"]
+script = ExtResource("1_7rmha")
+
+[node name="Interactible" parent="." instance=ExtResource("1_ix7ih")]
+
+[connection signal="is_interacted_with" from="Interactible" to="Interactible" method="_on_is_interacted_with"]
+[connection signal="is_interacted_with" from="Interactible" to="." method="_on_interactible_is_interacted_with"]
