@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+signal is_runing
+signal stop_running
+
 @export var speed = 100
 var direction
 
