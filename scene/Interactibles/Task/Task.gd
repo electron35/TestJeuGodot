@@ -1,6 +1,4 @@
-extends Area2D
-signal player_is_hiding
-
+extends "res://scene/Interactibles/Interactible.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,10 +9,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func _interact():
+	complete_task()
 
-func _on_interactible_is_interacted_with():
-	enter_hiding_place()
-	player_is_hiding.emit()
-
-func enter_hiding_place():
+func complete_task():
 	pass
+	

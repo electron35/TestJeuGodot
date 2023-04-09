@@ -1,4 +1,4 @@
-extends Area2D
+extends "res://scene/Interactibles/Interactible.gd"
 signal change_scene
 
 # Called when the node enters the scene tree for the first time.
@@ -10,11 +10,9 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_interactible_is_interacted_with():
+func _interact():
 	enter_door()
 	change_scene.emit()
-	pass # Replace with function body.
 
 func enter_door():
 	pass

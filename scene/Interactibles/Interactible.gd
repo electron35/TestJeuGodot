@@ -1,6 +1,5 @@
 extends Area2D
 
-signal is_interacted_with
 var can_be_interact_with
 
 # Called when the node enters the scene tree for the first time.
@@ -16,4 +15,7 @@ func _process(delta):
 	if area_exited:
 		can_be_interact_with = false
 	if can_be_interact_with && Input.is_action_pressed("Interact"):
-		is_interacted_with.emit()
+		_interact()
+
+func _interact():
+	pass
