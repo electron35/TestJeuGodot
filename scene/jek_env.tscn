@@ -5,9 +5,9 @@
 [ext_resource type="TileSet" uid="uid://hy5fdq83hlqi" path="res://assets/simple_tileset/simple_tileset.tres" id="3_culso"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_w4q4b"]
-vertices = PackedVector2Array(1167, 0, 1168, 622, 6, 617, 5, -2)
+vertices = PackedVector2Array(1171, 0, 1161, 613, 6, 617, 5, -2)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(5, -2, 6, 617, 1168, 622, 1167, 0)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(5, -2, 6, 617, 1161, 613, 1171, 0)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ios84"]
 size = Vector2(355.5, 277)
@@ -16,25 +16,27 @@ size = Vector2(355.5, 277)
 position = Vector2(-7, -2)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-8, 1)
 navigation_polygon = SubResource("NavigationPolygon_w4q4b")
+navigation_layers = 0
 
 [node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
 tile_set = ExtResource("3_culso")
+collision_visibility_mode = 1
 format = 2
 layer_0/tile_data = PackedInt32Array(1245184, 65536, 2, 1245185, 65536, 2, 1245186, 65536, 2, 1245187, 65536, 2, 1245188, 65536, 2, 1245189, 65536, 2, 1245190, 65536, 2, 1245191, 65536, 2, 1245192, 65536, 2, 1245193, 65536, 2, 1245194, 65536, 2, 1245195, 65536, 2, 1245196, 65536, 2, 1245197, 65536, 2, 1245198, 65536, 2, 1245199, 65536, 2, 1245200, 65536, 2, 1245201, 65536, 2, 1245202, 65536, 2, 1245203, 65536, 2, 1245204, 65536, 2, 1245205, 65536, 2, 1245206, 65536, 2, 1245207, 65536, 2, 1245208, 65536, 2, 1245209, 65536, 2, 1245210, 65536, 2, 1245211, 65536, 2, 1245212, 65536, 2, 1245213, 65536, 2, 1245214, 65536, 2, 1245215, 65536, 2, 1245216, 65536, 2, 1245217, 65536, 2, 1245218, 65536, 2, 1245219, 65536, 2, 1245220, 65536, 2, 1179648, 196608, 3, 1179684, 65536, 3)
 
 [node name="Sol" type="StaticBody2D" parent="."]
 position = Vector2(466, 632)
-collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sol"]
-position = Vector2(-162, -30)
+position = Vector2(328, 282)
 shape = SubResource("RectangleShape2D_ios84")
 debug_color = Color(0, 0.639216, 0.356863, 0.419608)
 
 [node name="Jekkyl" parent="." instance=ExtResource("1_isqf4")]
-position = Vector2(909, 381)
+position = Vector2(412, 549)
 
 [node name="Player" parent="." instance=ExtResource("2_pmn3n")]
-position = Vector2(251, 336)
+position = Vector2(841, 140)

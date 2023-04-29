@@ -1,11 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://cjxac1qv3ujuo"]
 
-[ext_resource type="PackedScene" uid="uid://bjdw1o6ixgh1t" path="res://scene/enemy/enemy.tscn" id="1_ybsu1"]
+[ext_resource type="Script" path="res://scene/enemy/JekkylMovement.gd" id="1_voqwn"]
 [ext_resource type="Script" path="res://scene/enemy/jekkyl.gd" id="2_24oou"]
 [ext_resource type="Texture2D" uid="uid://8l501jrnaqt8" path="res://icon.png" id="3_huka1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0ogn"]
-size = Vector2(64, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1kx1r"]
+radius = 27.0
+height = 80.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fd3oi"]
 animations = [{
@@ -21,33 +22,38 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oukew"]
 size = Vector2(640, 104)
 
-[node name="Jekkyl" instance=ExtResource("1_ybsu1")]
+[node name="Jekkyl" type="Node2D"]
 script = ExtResource("2_24oou")
-speed = 200
 
-[node name="JekkylRigid" type="RigidBody2D" parent="." index="0"]
-collision_layer = 2
-collision_mask = 3
+[node name="JekkylRigid" type="CharacterBody2D" parent="."]
+collision_layer = 0
+script = ExtResource("1_voqwn")
+starting_move_direction = null
+speed = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="JekkylRigid" index="0"]
-shape = SubResource("RectangleShape2D_c0ogn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JekkylRigid"]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_1kx1r")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="JekkylRigid" index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="JekkylRigid"]
+position = Vector2(1, -33)
 sprite_frames = SubResource("SpriteFrames_fd3oi")
 
-[node name="Timer" type="Timer" parent="." index="1"]
-autostart = true
-
-[node name="sight" type="Area2D" parent="." index="2"]
+[node name="sight" type="Area2D" parent="JekkylRigid"]
 collision_layer = 0
 collision_mask = 8
 gravity_space_override = 1
 gravity = 2674.9
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="sight" index="0"]
-position = Vector2(0, -20)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="JekkylRigid/sight"]
+position = Vector2(0, -52)
 shape = SubResource("RectangleShape2D_oukew")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="sight" to="." method="_on_sight_body_entered"]
-[connection signal="body_exited" from="sight" to="." method="_on_sight_body_exited"]
+[node name="ChangeDirectionTimer" type="Timer" parent="JekkylRigid"]
+autostart = true
+
+[node name="Node2D" type="Node2D" parent="JekkylRigid"]
+
+[connection signal="body_entered" from="JekkylRigid/sight" to="JekkylRigid" method="_on_sight_body_entered"]
+[connection signal="body_exited" from="JekkylRigid/sight" to="JekkylRigid" method="_on_sight_body_exited"]
+[connection signal="timeout" from="JekkylRigid/ChangeDirectionTimer" to="JekkylRigid" method="_on_timer_timeout"]

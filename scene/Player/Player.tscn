@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0fdb7258a0q"]
 
-[ext_resource type="Script" path="res://scene/Player/Player.gd" id="1_5cmx8"]
+[ext_resource type="Script" path="res://scene/Player/PlayerCharacter.gd" id="1_s3efk"]
 [ext_resource type="Texture2D" uid="uid://8l501jrnaqt8" path="res://icon.png" id="2_bw2y2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uopvj"]
@@ -14,13 +14,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5ay1"]
-size = Vector2(76, 161)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2ly1"]
+radius = 38.0
+height = 158.0
 
-[node name="Player" type="RigidBody2D"]
-collision_layer = 9
-collision_mask = 11
-script = ExtResource("1_5cmx8")
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+platform_floor_layers = 4278190081
+platform_wall_layers = 1
+script = ExtResource("1_s3efk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.999999, -0.500004)
@@ -28,4 +30,4 @@ scale = Vector2(1.1875, 2.51563)
 sprite_frames = SubResource("SpriteFrames_uopvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h5ay1")
+shape = SubResource("CapsuleShape2D_n2ly1")
