@@ -31,3 +31,7 @@ sprite_frames = SubResource("SpriteFrames_uopvj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_n2ly1")
+
+[node name="PlayerCam" type="Camera2D" parent="."]
+offset = Vector2(0, -125)
+zoom = Vector2(1.5, 1.5)

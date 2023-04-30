@@ -28,8 +28,6 @@ script = ExtResource("2_24oou")
 [node name="JekkylRigid" type="CharacterBody2D" parent="."]
 collision_layer = 0
 script = ExtResource("1_voqwn")
-starting_move_direction = null
-speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JekkylRigid"]
 position = Vector2(0, -40)
@@ -50,6 +48,7 @@ position = Vector2(0, -52)
 shape = SubResource("RectangleShape2D_oukew")
 
 [node name="ChangeDirectionTimer" type="Timer" parent="JekkylRigid"]
+wait_time = 15.0
 autostart = true
 
 [node name="Node2D" type="Node2D" parent="JekkylRigid"]

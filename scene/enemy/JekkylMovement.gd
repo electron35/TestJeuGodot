@@ -12,6 +12,7 @@ var rng = RandomNumberGenerator.new()
 
 var player_notice : bool = false
 var player_ref = null
+var timer
 
 func one_or_minus_one():
 	var my_random_number = rng.randi_range(0,1)
@@ -21,13 +22,14 @@ func one_or_minus_one():
 
 func _ready():
 	rng.randomize()
+	timer = $ChangeDirectionTimer.wait_time
 
 
 func _physics_process(delta):
 	
-	if player_refs:
-		$ChangeDirectionTimer.wait_time = 1
-		if player_ref.position.x > position.x:
+	if player_ref:
+		$ChangeDirectionTimer.wait_time = timer
+		if player_ref.global_position.x > global_position.x:
 			direction = 1
 		else:
 			direction = -1

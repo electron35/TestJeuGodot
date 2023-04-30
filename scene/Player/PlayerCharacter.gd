@@ -3,9 +3,14 @@ extends CharacterBody2D
 @export var walking_speed = 200.0
 @export var running_speed = 300.0
 var speed = walking_speed
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var is_jumping : bool = false
+
+
+func _ready():
+	pass
 
 func _process(delta):
 	if Input.is_action_just_pressed("Sprint"):
